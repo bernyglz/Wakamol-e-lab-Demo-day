@@ -41,8 +41,8 @@ y_Scaler_mty = joblib.load('y_scaler_mty.sav')
 @app.route('/')
 def home():
     "Rutas disponibles:"
-    "http://127.0.0.1:5000/predict/<room>/<bathroom>/<construction>/<terrain>/<direction>/<casa>/<casa_en_c>/<depto>/<nuevo>/<remate>"
-    "http://127.0.0.1:5000/datos"
+    "https://wakamol-e-lab-demo-day.herokuapp.com/predict/<room>/<bathroom>/<construction>/<terrain>/<direction>/<casa>/<casa_en_c>/<depto>/<nuevo>/<remate>"
+    "https://wakamol-e-lab-demo-day.herokuapp.com/datos"
     return render_template('index.html')
 
 #################################################
