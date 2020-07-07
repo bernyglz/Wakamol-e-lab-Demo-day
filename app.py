@@ -47,7 +47,7 @@ def home():
 
 #################################################
 #@app.route('/predict/<room>/<bathroom>/<construction>/<terrain>/<direction>/<casa>/<casa_en_c>/<depto>/<nuevo>/<remate>', methods=['GET'])
-@app.route('/predict/<room>/<bathroom>/<construction>/<terrain>/<direction>/<casa>/<casa_en_c>/<depto>/<nuevo>/<remate>')
+@app.route('https://wakamol-e-lab-demo-day.herokuapp.com/predict/<room>/<bathroom>/<construction>/<terrain>/<direction>/<casa>/<casa_en_c>/<depto>/<nuevo>/<remate>')
 def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, depto, nuevo, remate):
     
     # Datos Dummy:
