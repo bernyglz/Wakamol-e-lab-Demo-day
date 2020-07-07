@@ -41,8 +41,8 @@ y_Scaler_mty = joblib.load('y_scaler_mty.sav')
 @app.route('/')
 def home():
     "Rutas disponibles:"
-    "https://127.0.0.1:5000/predict/<room>/<bathroom>/<construction>/<terrain>/<direction>/<casa>/<casa_en_c>/<depto>/<nuevo>/<remate>"
-    "https://127.0.0.1:5000/datos"
+    "https://wakamol-e-lab-demo-day.herokuapp.com/predict/<room>/<bathroom>/<construction>/<terrain>/<direction>/<casa>/<casa_en_c>/<depto>/<nuevo>/<remate>"
+    
     return render_template('index.html')
 
 #################################################
@@ -68,7 +68,8 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
         geo      = response.json()
         lat.append(geo["results"][0]["geometry"]["location"]["lat"])
         lon.append(geo["results"][0]["geometry"]["location"]["lng"])
-            
+        
+        
     except (KeyError, IndexError):
         notfound.append(index)
        
