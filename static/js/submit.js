@@ -75,7 +75,7 @@ $("#buttonsubmit").on("click", function(){
     console.log(remate);
 
     console.log(`/predict/${inputroom}/${inputbathroom}/${inputhousem2}/${inputterrain}/${inputcity}/${casa}/${casa_en_c}/${depto}/${nuevo}/${remate}`) 
-    d3.json(`/predict/${inputroom}/${inputbathroom}/${inputhousem2}/${inputterrain}/${inputcity}/${casa}/${casa_en_c}/${depto}/${nuevo}/${remate}`).then(data => {
+    d3.json(`https://wakamol-e-lab-demo-day.herokuapp.com/predict/${inputroom}/${inputbathroom}/${inputhousem2}/${inputterrain}/${inputcity}/${casa}/${casa_en_c}/${depto}/${nuevo}/${remate}`).then(data => {
         // $("#output").text(data);
 
         console.log(data);
