@@ -44,12 +44,12 @@ def home():
     "https://wakamol-e-lab-demo-day.herokuapp.com/predict/<room>/<bathroom>/<construction>/<terrain>/<direction>/<casa>/<casa_en_c>/<depto>/<nuevo>/<remate>"
     
     return render_template('index.html')
-
+    
 #################################################
 #@app.route('/predict/<room>/<bathroom>/<construction>/<terrain>/<direction>/<casa>/<casa_en_c>/<depto>/<nuevo>/<remate>', methods=['GET'])
 @app.route('/predict/<room>/<bathroom>/<construction>/<terrain>/<direction>/<casa>/<casa_en_c>/<depto>/<nuevo>/<remate>')
 def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, depto, nuevo, remate):
-    
+    print("entró a la ruta")
     # Datos Dummy:
     ###### 
     # http://127.0.0.1:5000/predict/2/1/80/80/Parque%Espa%C3%B1a%20la%Condesa/0/0/1/1/0
@@ -58,17 +58,21 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
     ## Function: Locate address
     # Build URL using the Google Maps API
     base_url = "https://maps.googleapis.com/maps/api/geocode/json"
+    print(base_url)
     params = {"address": direction, "key": google_api_key}
+    print(params)
     #loop to get all locations from locaitions
     lat = []
     lon = []
     
     try:
         response = requests.get(base_url, params={"address": direction,"key": google_api_key})
+        print(response)
         geo      = response.json()
         lat.append(geo["results"][0]["geometry"]["location"]["lat"])
         lon.append(geo["results"][0]["geometry"]["location"]["lng"])
-        
+        print(lat)
+        print(lon)
         
     except (KeyError, IndexError):
         notfound.append(index)
@@ -77,13 +81,20 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
     if (lat[0] > 19.1) & (lat[0] < 19.8) & (lon[0] > - 99.4) & (lon[0] < - 98.8):
         
         # Modelo CDMX + Estado de México
+        print("entra modelo cdmx")
         float_features = [room, bathroom, construction, terrain, lon[0], lat[0], nuevo, remate, casa, casa_en_c, depto]
+        print(float_features)
         float_features = np.array(float_features).reshape(1, -1)
+        print(float_features)
         float_features = X_Scaler_cdmx.transform(float_features)
+        print(float_features)
         prediction = model_cdmx.predict(float_features)
+        print(prediction)
         prediction = y_Scaler_cdmx.inverse_transform(prediction)
+        print(prediction)
         
         output = round(prediction[0], 2)
+        print(output)
         
     elif (lat[0] > 20.39) & (lat[0] < 20.82) & (lon[0] > - 103.59) & (lon[0] < - 103.18):
         # Modelo GDL
@@ -111,6 +122,7 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
     # Return
     
     #return jsonify(output, lon, lat)
+    print(output)
     return jsonify(output)
 
 #################################################
