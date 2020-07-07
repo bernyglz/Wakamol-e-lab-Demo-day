@@ -73,6 +73,7 @@ $("#buttonsubmit").on("click", function(){
     console.log(depto);
     console.log(nuevo);
     console.log(remate);
+    console.log("prueba1")
 
     console.log(`/predict/${inputroom}/${inputbathroom}/${inputhousem2}/${inputterrain}/${inputcity}/${casa}/${casa_en_c}/${depto}/${nuevo}/${remate}`) 
     d3.json(`/predict/${inputroom}/${inputbathroom}/${inputhousem2}/${inputterrain}/${inputcity}/${casa}/${casa_en_c}/${depto}/${nuevo}/${remate}`).then(data => {
