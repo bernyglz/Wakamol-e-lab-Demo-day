@@ -78,6 +78,8 @@ $("#buttonsubmit").on("click", function(){
     d3.json(`/predict/${inputroom}/${inputbathroom}/${inputhousem2}/${inputterrain}/${inputcity}/${casa}/${casa_en_c}/${depto}/${nuevo}/${remate}`).then(data => {
         // $("#output").text(data);
 
+        console.log(data);
+
         if (parseInt(data)===0){
             $("#paragraph-price").html("<h1>This is not a valid address. Try again. Please include one of three following city options: Guadalajara, Mexico City and Monterrey.</h1>");
             console.log( "Address not valid. Try again." );
