@@ -12,7 +12,7 @@ import joblib
 
 # Google developer API key
 from api_keys_all import google_api_key
-
+  
 ## 
 
 app = Flask(__name__)
@@ -86,7 +86,8 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
         print(float_features)
         float_features = np.array(float_features).reshape(1, -1)
         print(float_features)
-        float_features = X_Scaler_cdmx.transform(float_features)
+        #float_features = X_Scaler_cdmx.transform(float_features)
+        float_features= X_Scaler.fit(float_features).transform(float_features)
         print(float_features)
         prediction = model_cdmx.predict(float_features)
         print(prediction)
