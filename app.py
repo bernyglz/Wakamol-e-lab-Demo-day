@@ -86,7 +86,7 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
         print(float_features)
         float_features = np.array(float_features).reshape(1, -1)
         print(float_features)
-        float_features = X_Scaler_cdmx.transform(float_features)
+        #float_features = X_Scaler_cdmx.transform(float_features)
         float_features= X_Scaler_cdmx.fit(float_features).transform(float_features)
         print(float_features)
         prediction = model_cdmx.predict(float_features)
