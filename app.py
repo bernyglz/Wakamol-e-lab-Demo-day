@@ -83,19 +83,18 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
         # Modelo CDMX + Estado de México
         float_features = [room, bathroom, construction, terrain, lon[0], lat[0], nuevo, remate, casa, casa_en_c, depto]
         print(float_features)
-        #for i, item in enumerate(float_features):
-        #    float_features[i] = float(item)
-        #print(float_features)
+        for i, item in enumerate(float_features):
+            float_features[i] = float(item)
+        print(float_features)
         float_features = np.array(float_features).reshape(1, -1)
         print(float_features)
         #float_features= X_Scaler_cdmx.fit(float_features)
         #print(float_features)
         #float_features = X_Scaler_cdmx.transform(float_features)
         #float_features1 = X_Scaler_cdmx.fit(float_features).transform(float_features)
-        float_features1 = np.array(np.array(float_features - X_Scaler_cdmx.mean_) / X_Scaler_cdmx.scale_)
+        float_features = np.array(np.array(float_features - X_Scaler_cdmx.mean_) / X_Scaler_cdmx.scale_)
         print(float_features)
-        print(float_features1)
-        prediction = model_cdmx.predict(float_features1)
+        prediction = model_cdmx.predict(float_features)
         print(prediction)
         #prediction = y_Scaler_cdmx.inverse_transform(prediction)
         prediction = (prediction * y_Scaler_cdmx.scale_) + y_Scaler_cdmx.mean_
@@ -108,9 +107,12 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
         
         # Modelo GDL
         float_features = [room, bathroom, construction, terrain, lon[0], lat[0], nuevo, remate, casa, casa_en_c, depto]
+        for i, item in enumerate(float_features):
+            float_features[i] = float(item)
         float_features = np.array(float_features).reshape(1, -1)
         #float_features = X_Scaler_gdl.transform(float_features)
-        float_features = (float_features - X_Scaler_gdl.mean_) / X_Scaler_gdl.scale_
+        #float_features = (float_features - X_Scaler_gdl.mean_) / X_Scaler_gdl.scale_
+        float_features = np.array(np.array(float_features - X_Scaler_gdl.mean_) / X_Scaler_gdl.scale_)
         prediction = model_gdl.predict(float_features)
         #prediction = y_Scaler_gdl.inverse_transform(prediction)
         prediction = (prediction * y_Scaler_gdl.scale_) + y_Scaler_gdl.mean_
@@ -121,9 +123,12 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
         
         # Modelo MTY
         float_features = [room, bathroom, construction, terrain, lon[0], lat[0], nuevo, remate, casa, casa_en_c, depto]
+        for i, item in enumerate(float_features):
+            float_features[i] = float(item)
         float_features = np.array(float_features).reshape(1, -1)
         #float_features = X_Scaler_mty.transform(float_features)
-        float_features = (float_features - X_Scaler_mty.mean_) / X_Scaler_mty.scale_
+        #float_features = (float_features - X_Scaler_mty.mean_) / X_Scaler_mty.scale_
+        float_features = np.array(np.array(float_features - X_Scaler_mty.mean_) / X_Scaler_mty.scale_)
         prediction = model_mty.predict(float_features)
         #prediction = y_Scaler_mty.inverse_transform(prediction)
         prediction = (prediction * y_Scaler_mty.scale_) + y_Scaler_mty.mean_
