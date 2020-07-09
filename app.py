@@ -83,10 +83,8 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
         # Modelo CDMX + Estado de México
         float_features = [room, bathroom, construction, terrain, lon[0], lat[0], nuevo, remate, casa, casa_en_c, depto]
         print(float_features)
-        i=0
-        for item in float_features:
-            float(float_features[i])
-            i=i+1
+        for i, item in enumerate(float_features):
+            float_features[i] = float(item)
         print(float_features)
         float_features = np.array(float_features).reshape(1, -1)
         print(float_features)
