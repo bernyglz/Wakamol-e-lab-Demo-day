@@ -88,10 +88,10 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
         #float_features= X_Scaler_cdmx.fit(float_features)
         #print(float_features)
         #float_features = X_Scaler_cdmx.transform(float_features)
-        #float_features = (float_features - X_Scaler_cdmx.mean_) / X_Scaler_cdmx.scale_
-        float_features= X_Scaler_cdmx.fit(float_features).transform(float_features)
+        float_features1 = X_Scaler_cdmx.fit(float_features).transform(float_features)
         print(float_features)
-        prediction = model_cdmx.predict(float_features)
+        print(float_features1)
+        prediction = model_cdmx.predict(float_features1)
         print(prediction)
         #prediction = y_Scaler_cdmx.inverse_transform(prediction)
         prediction = (prediction * y_Scaler_cdmx.scale_) + y_Scaler_cdmx.mean_
