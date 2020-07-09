@@ -82,11 +82,11 @@ $("#buttonsubmit").on("click", function(){
         console.log(data);
 
         if (parseInt(data)===0){
-            $("#paragraph-price").html("<h1>This is not a valid address. Try again. Please include one of three following city options: Guadalajara, Mexico City and Monterrey.</h1>");
+            $("#paragraph-price").html("<h6>This is not a valid address. Try again. Please include one of three following city options: Guadalajara, Mexico City and Monterrey.</h6>");
             console.log( "Address not valid. Try again." );
         }
         else{
-            $("#paragraph-price").html("<h1>"+new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data)+"</h1>");
+            $("#paragraph-price").html("<h5>"+new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data)+"</h5>");
             console.log( new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data) );
         }
         
