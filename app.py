@@ -81,41 +81,39 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
     if (lat[0] > 19.1) & (lat[0] < 19.8) & (lon[0] > - 99.4) & (lon[0] < - 98.8):
         
         # Modelo CDMX + Estado de México
-        print("entra modelo cdmx")
         float_features = [room, bathroom, construction, terrain, lon[0], lat[0], nuevo, remate, casa, casa_en_c, depto]
-        print(float_features)
-        float_features= X_Scaler_cdmx.fit(float_features).transform(float_features)
-        print(float_features)
         float_features = np.array(float_features).reshape(1, -1)
-        print(float_features)
         #float_features = X_Scaler_cdmx.transform(float_features)
-        #float_features= X_Scaler_cdmx.fit(float_features).transform(float_features)
-        #print(float_features)
+        float_features = (float_features - X_Scaler_cdmx.mean_) / X_Scaler_cdmx.scale_
         prediction = model_cdmx.predict(float_features)
-        print(prediction)
-        prediction = y_Scaler_cdmx.inverse_transform(prediction)
-        print(prediction)
+        #prediction = y_Scaler_cdmx.inverse_transform(prediction)
+        prediction = (prediction * y_Scaler_cdmx.scale_) + y_Scaler_cdmx.mean_
         
         output = round(prediction[0], 2)
-        print(output)
         
     elif (lat[0] > 20.39) & (lat[0] < 20.82) & (lon[0] > - 103.59) & (lon[0] < - 103.18):
+        
         # Modelo GDL
         float_features = [room, bathroom, construction, terrain, lon[0], lat[0], nuevo, remate, casa, casa_en_c, depto]
         float_features = np.array(float_features).reshape(1, -1)
-        float_features = X_Scaler_gdl.transform(float_features)
+        #float_features = X_Scaler_gdl.transform(float_features)
+        float_features = (float_features - X_Scaler_gdl.mean_) / X_Scaler_gdl.scale_
         prediction = model_gdl.predict(float_features)
-        prediction = y_Scaler_gdl.inverse_transform(prediction)
+        #prediction = y_Scaler_gdl.inverse_transform(prediction)
+        prediction = (prediction * y_Scaler_gdl.scale_) + y_Scaler_gdl.mean_
         
         output = round(prediction[0], 2)
         
     elif (lat[0] > 25.51) & (lat[0] < 25.85) & (lon[0] > - 100.53) & (lon[0] < - 100.07):
+        
         # Modelo MTY
         float_features = [room, bathroom, construction, terrain, lon[0], lat[0], nuevo, remate, casa, casa_en_c, depto]
         float_features = np.array(float_features).reshape(1, -1)
-        float_features = X_Scaler_mty.transform(float_features)
+        #float_features = X_Scaler_mty.transform(float_features)
+        float_features = (float_features - X_Scaler_mty.mean_) / X_Scaler_mty.scale_
         prediction = model_mty.predict(float_features)
-        prediction = y_Scaler_mty.inverse_transform(prediction)
+        #prediction = y_Scaler_mty.inverse_transform(prediction)
+        prediction = (prediction * y_Scaler_mty.scale_) + y_Scaler_mty.mean_
         
         output = round(prediction[0], 2)
     
