@@ -82,14 +82,22 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
         
         # Modelo CDMX + Estado de México
         float_features = [room, bathroom, construction, terrain, lon[0], lat[0], nuevo, remate, casa, casa_en_c, depto]
+        print(float_features)
         float_features = np.array(float_features).reshape(1, -1)
+        print(float_features)
+        float_features= X_Scaler_cdmx.fit(float_features)
+        print(float_features)
         #float_features = X_Scaler_cdmx.transform(float_features)
         float_features = (float_features - X_Scaler_cdmx.mean_) / X_Scaler_cdmx.scale_
+        print(float_features)
         prediction = model_cdmx.predict(float_features)
+        print(prediction)
         #prediction = y_Scaler_cdmx.inverse_transform(prediction)
         prediction = (prediction * y_Scaler_cdmx.scale_) + y_Scaler_cdmx.mean_
+        print(prediction)
         
         output = round(prediction[0], 2)
+        print(output)
         
     elif (lat[0] > 20.39) & (lat[0] < 20.82) & (lon[0] > - 103.59) & (lon[0] < - 103.18):
         
