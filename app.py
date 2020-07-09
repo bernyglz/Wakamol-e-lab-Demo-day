@@ -81,7 +81,12 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
     if (lat[0] > 19.1) & (lat[0] < 19.8) & (lon[0] > - 99.4) & (lon[0] < - 98.8):
         
         # Modelo CDMX + Estado de México
-        float_features = float([room, bathroom, construction, terrain, lon[0], lat[0], nuevo, remate, casa, casa_en_c, depto])
+        float_features = [room, bathroom, construction, terrain, lon[0], lat[0], nuevo, remate, casa, casa_en_c, depto]
+        print(float_features)
+        i=0
+        for item in float_features:
+            float(float_features[i])
+            i=i+1
         print(float_features)
         float_features = np.array(float_features).reshape(1, -1)
         print(float_features)
