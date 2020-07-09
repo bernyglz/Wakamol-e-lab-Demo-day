@@ -44,7 +44,7 @@
 }
 
 .h1-format{
-    color: white;
+    color: lightslategray;
 }
 
 .link-default {
@@ -98,6 +98,15 @@
 }
 
 .box-2 {
+    box-sizing: content-box;
+    background: white;
+    opacity: 0;
+    margin-left:5px;
+    border:10px;
+    border-color:black;  
+}
+
+.box-3 {
     box-sizing: content-box;
     background: white;
     margin-left:5px;

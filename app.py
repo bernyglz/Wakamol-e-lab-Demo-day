@@ -100,7 +100,7 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
         prediction = (prediction * y_Scaler_cdmx.scale_) + y_Scaler_cdmx.mean_
         print(prediction)
         
-        output = round(prediction[0], 2)
+        output = round(prediction[0], 0)
         print(output)
         
     elif (lat[0] > 20.39) & (lat[0] < 20.82) & (lon[0] > - 103.59) & (lon[0] < - 103.18):
@@ -117,7 +117,7 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
         #prediction = y_Scaler_gdl.inverse_transform(prediction)
         prediction = (prediction * y_Scaler_gdl.scale_) + y_Scaler_gdl.mean_
         
-        output = round(prediction[0], 2)
+        output = round(prediction[0], 0)
         
     elif (lat[0] > 25.51) & (lat[0] < 25.85) & (lon[0] > - 100.53) & (lon[0] < - 100.07):
         
@@ -133,7 +133,7 @@ def predict(room, bathroom, construction, terrain, direction, casa, casa_en_c, d
         #prediction = y_Scaler_mty.inverse_transform(prediction)
         prediction = (prediction * y_Scaler_mty.scale_) + y_Scaler_mty.mean_
         
-        output = round(prediction[0], 2)
+        output = round(prediction[0], 0)
     
     else:
         output = 0
